@@ -143,3 +143,54 @@ Each server has its way of doing this, so they may require assistance from their
 
 Please let me know if anything is unclear, or if the user is having any issues and I'll be happy to assist.
 
+
+---
+
+
+## Problem B
+
+**Note: Since I don’t have specifics on the issue, I’m not able to provide a concrete solution here, although I will mention some common issues and I will run through my “workflow” of troubleshooting issues with Cron jobs not running.**
+
+When setting up a Cron job to run PHP code that does something, the issue can be in one of two places (which is why we divided the main task into two smaller ones previously):
+
+* The code doesn’t do what we want it to do, that is, it’s incorrect.
+* Issues with the actual Cron job, like not being set up properly, or issues with the server.
+
+Since I’ve tested the code on my environment and it ran fine, the issue must be with how the Cron job was set up.
+
+The three most common reasons the Cron job didn’t work would be:
+
+* Misconfigured Cron job
+* Permissions issues
+* Server unavailability
+
+## Misconfigured Cron job:
+
+The two main things I’d check here are if the schedule is what the user expects and if the cron commands are correct. 
+
+Scheduling issues can mean that the Cron job is working as expected, but the time when it was supposed to run wasn’t set up properly, hence, we expect that it should’ve done its task and think that there is an issue. Clarifying with the user when exactly they expect the Cron job to run and check this against the actual settings usually solves this issue.
+
+The Cron commands may not be correct, that is, the file path to the rocket-clean-domain.php file in this case may not be entered correctly. This can be checked by getting the correct path to the file and checking it against what was entered in the command.
+
+## Permission issues:
+
+The user account that created the Cron job doesn’t have permission to access the file we’re pointing to. To run properly, a cron job must be run under a user account that has the appropriate permissions to access the necessary files and resources. A fix for this would be to usually talk with any higher-level users or the hosting team to see if we can change the permissions and allow the Cron job to run.
+
+
+## Server unavailability:
+
+This is a common issue with cheaper shared hosting plans. The server or machine that the cron job is running on is not available or is experiencing technical issues. If the server is down or is not responding, the cron job will not be able to run. Unfortunately, there isn’t much we can do about this other than upgrading to better hosting. 
+
+## My Workflow:
+
+* Log into the server ( I will be assuming CPanel since it’s the most common one with WordPress installs)
+* Check the PHP file for any errors. Although the code worked on my end, I can’t be sure that it was correctly copied.
+* While there, check the path where it’s located. Although we advised the root folder, the file might’ve been created at a different location.
+* Check this path against the file path in the Cron job itself.
+* Check that the schedule is correct for what the user expects
+* Check the logs for the Cron job (located in /var/log/ with the name cron) for any clues.
+* Check permission issues. The file path can cause issues with permissions, so I’d check if it’s an absolute file path, [which is advised by CPanel here](https://support.cpanel.net/hc/en-us/articles/360053675953-How-to-troubleshoot-user-level-cron-issues). I would also check the permissions of the file and the ownership and cross reference that with the user.
+
+I gather all the clues I got from this and provide a solution, or at the very least, provide the user with the next steps that need to be taken to diagnose the exact cause.
+
+
