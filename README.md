@@ -65,7 +65,7 @@ Alternatively, you can download the file from this repo and use that.
 
 ## Detailed guide
 
-This reqeust can be split up into two smaller tasks:
+This request can be split up into two smaller tasks:
 
 * Write the code that will delete the files the user needs to be deleted.
 * Setting up the site/server so that it runs the code that deletes the files at a certain time.
@@ -101,7 +101,7 @@ We've taken care of the code, and now we need to explain to the user how to set 
 
 There are two main ways to do this, the main difference being that one is a “real” Cron job, and the other uses a function that’s built into WordPress called WP-Cron. WP Cron has its limitations due to not being a “real” cron job, so we’ll need the user to create a “real” Cron job on their server. 
 
-To create real cron jobs, we will first need to stop WP Cron from running. This is also great for the users site as it wont run anytime smeone visits the site. 
+To create real cron jobs, we will first need to stop WP Cron from running. This is also great for the user's site as it won't run anytime someone visits the site. 
 
 To do this, the user needs to add code to their wp-config.php file. They can do this by connecting to their server via FTP and finding the file, or if they’re using CPanel, they can use the File Manager to edit the file. 
 
@@ -141,5 +141,5 @@ Each server has its way of doing this, so they may require assistance from their
 * [For the WP Cron cron job ( I would suggest they run it once per 5-10 minutes )](https://recordit.co/A4Jj1Kg7x9)
 * [For the rocket-clean-comain.php cron job](https://recordit.co/cl2YCoMCzu)
 
-Please let me know if anything is unclear, or the user is having any issues and I'll be happy to assist.
+Please let me know if anything is unclear, or if the user is having any issues and I'll be happy to assist.
 
